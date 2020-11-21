@@ -1,5 +1,6 @@
 package hospital;
 import javax.swing.JOptionPane;
+import date_time.*;
 
 public class Patient{
     private String name;
@@ -49,8 +50,8 @@ class Indoor_patient extends Patient{
     private int ward_no;
     private int room_no;
     private int bed_no;
-    date_time.Date_class date;
-    Doctor doctor;
+    Date_class date;
+    Doctor doctor = new Doctor();
     private double fee;
 
     Indoor_patient()
@@ -80,7 +81,7 @@ class Indoor_patient extends Patient{
     {
         return room_no;
     }
-    public date_time.Date_class getDate()
+    public Date_class getDate()
     {
         return date;
     }
@@ -104,7 +105,7 @@ class Indoor_patient extends Patient{
     {
         this.room_no = room_no;
     }
-    public void setDate(date_time.Date_class date)
+    public void setDate(Date_class date)
     {
         date.getDate();
     }
@@ -118,8 +119,8 @@ class Indoor_patient extends Patient{
     }
     public void addPatient()
     {
-        doctor.addDoctor();
         date.getDate();
+        doctor.addDoctor();
         super.addPatient();
         String bed = JOptionPane.showInputDialog("Enter bed no: ");
         bed_no = Integer.parseInt(bed);
@@ -146,26 +147,26 @@ class Indoor_patient extends Patient{
 
 ////////////////*******************OUTDOOR PATIENT*****************/////////////////
 class Outdoor_patient extends Patient{
-    date_time.Date_class dateOfApp;
-    date_time.Time time;
-    Doctor doctor;
+    Date_class dateOfApp;
+    Time time = new Time();
+    Doctor doctor = new Doctor();
     private double fee;
 
     Outdoor_patient(){
         fee = 0.0;
     }
-    Outdoor_patient(String name, String cnic, String phone_no, String gender, int age, String address, date_time.Date_class dateOfApp, date_time.Time time, Doctor doctor, double fee){
+    Outdoor_patient(String name, String cnic, String phone_no, String gender, int age, String address, Date_class dateOfApp, Time time, Doctor doctor, double fee){
         super(name, cnic, phone_no, gender, age, address);
         this.dateOfApp = dateOfApp;
         this.time = time;
         this.doctor = doctor;
         this.fee = fee;
     }
-    public date_time.Date_class getDate()
+    public Date_class getDate()
     {
         return dateOfApp;
     }
-    public date_time.Time getTime()
+    public Time getTime()
     {
         return time;
     }
@@ -177,11 +178,11 @@ class Outdoor_patient extends Patient{
     {
         return fee;
     }
-    public void setDate(date_time.Date_class dateOfApp)
+    public void setDate(Date_class dateOfApp)
     {
         this.dateOfApp = dateOfApp;
     }
-    public void setTime(date_time.Time time)
+    public void setTime(Time time)
     {
         time.getTime();
     }
