@@ -41,11 +41,15 @@ public class Patient{
         JOptionPane.showMessageDialog(null, "Name is "+name+"/nCnic is "+cnic+"\nGender is "+gender+"\nPhone no is "+phone_no+"\nAge is "+age+"\nAddress is "+address, "Patient", JOptionPane.INFORMATION_MESSAGE);
     }
 }
+
+
+////////////////*******************INDOOR PATIENT*****************/////////////////
+
 class Indoor_patient extends Patient{
     private int ward_no;
     private int room_no;
     private int bed_no;
-    date_time.Date date;
+    date_time.Date_class date;
     Doctor doctor;
     private double fee;
 
@@ -56,14 +60,12 @@ class Indoor_patient extends Patient{
         bed_no = 0;
         fee = 0.0;
     }
-    Indoor_patient(String name, String cnic, String phone_no, String gender, int age, String address, int ward_no, int room_no, int bed_no, date_time.Date date, Doctor doctor, double fee){
+    Indoor_patient(String name, String cnic, String phone_no, String gender, int age, String address, int ward_no, int room_no, int bed_no, double fee){
         
         super(name, cnic, phone_no, gender, age, address);
         this.ward_no = ward_no;
         this.room_no = room_no;
         this.bed_no = bed_no;
-        this.date = date;
-        this.doctor = doctor;
         this.fee = fee;
     }
     public int getWardno()
@@ -78,7 +80,7 @@ class Indoor_patient extends Patient{
     {
         return room_no;
     }
-    public date_time.Date getDate()
+    public date_time.Date_class getDate()
     {
         return date;
     }
@@ -102,13 +104,13 @@ class Indoor_patient extends Patient{
     {
         this.room_no = room_no;
     }
-    public void setDate(date_time.Date date)
+    public void setDate(date_time.Date_class date)
     {
-        this.date = date;
+        date.getDate();
     }
     public void setDoctor(Doctor doctor)
     {
-        this.doctor = doctor;
+        doctor.addDoctor();
     }
     public void setFee(double fee)
     {
@@ -116,6 +118,8 @@ class Indoor_patient extends Patient{
     }
     public void addPatient()
     {
+        doctor.addDoctor();
+        date.getDate();
         super.addPatient();
         String bed = JOptionPane.showInputDialog("Enter bed no: ");
         bed_no = Integer.parseInt(bed);
@@ -125,12 +129,11 @@ class Indoor_patient extends Patient{
         ward_no = Integer.parseInt(ward);
         String fees = JOptionPane.showInputDialog("Enter fee: ");
         fee = Integer.parseInt(fees);
-        doctor.addDoctor();
-        date.addDate();
 
     }
     public void printPatient()
     {
+        
         super.printPatient();
         JOptionPane.showMessageDialog(null, "Bed no is "+bed_no+"/nRoom no is "+room_no+"\nWard no is "+ward_no+"\nFee is "+fee, "PATIENTS", JOptionPane.INFORMATION_MESSAGE);
         doctor.printDoctor();
@@ -139,8 +142,11 @@ class Indoor_patient extends Patient{
 
  
 }
+
+
+////////////////*******************OUTDOOR PATIENT*****************/////////////////
 class Outdoor_patient extends Patient{
-    date_time.Date date;
+    date_time.Date_class dateOfApp;
     date_time.Time time;
     Doctor doctor;
     private double fee;
@@ -148,16 +154,16 @@ class Outdoor_patient extends Patient{
     Outdoor_patient(){
         fee = 0.0;
     }
-    Outdoor_patient(String name, String cnic, String phone_no, String gender, int age, String address, date_time.Date date, date_time.Time time, Doctor doctor, double fee){
+    Outdoor_patient(String name, String cnic, String phone_no, String gender, int age, String address, date_time.Date_class dateOfApp, date_time.Time time, Doctor doctor, double fee){
         super(name, cnic, phone_no, gender, age, address);
-        this.date = date;
+        this.dateOfApp = dateOfApp;
         this.time = time;
         this.doctor = doctor;
         this.fee = fee;
     }
-    public date_time.Date getDate()
+    public date_time.Date_class getDate()
     {
-        return date;
+        return dateOfApp;
     }
     public date_time.Time getTime()
     {
@@ -171,17 +177,17 @@ class Outdoor_patient extends Patient{
     {
         return fee;
     }
-    public void setDate(date_time.Date date)
+    public void setDate(date_time.Date_class dateOfApp)
     {
-        this.date = date;
+        this.dateOfApp = dateOfApp;
     }
     public void setTime(date_time.Time time)
     {
-        this.time = time;
+        time.getTime();
     }
     public void setDoctor(Doctor doctor)
     {
-        this.doctor = doctor;
+        doctor.addDoctor();
     }
     public void setFee(double fee)
     {
@@ -198,13 +204,8 @@ class Outdoor_patient extends Patient{
     {
         super.printPatient();
         doctor.printDoctor();
-        JOptionPane.showMessageDialog(null, date, "DATE", JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(null, time, "TIME", JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(null, "Fee is "+fee, "PATIENTS", JOptionPane.INFORMATION_MESSAGE);
-        // JOptionPane.showMessageDialog(null, date, "DATE", JOptionPane.INFORMATION_MESSAGE);
-    }
-    public void appsOnDay()
-    {
+        JOptionPane.showMessageDialog(null, "Date of appointment is "+dateOfApp+"\nTime of appointment is "+time+"\nFee  of patient is "+fee, "Appointment Info", JOptionPane.INFORMATION_MESSAGE);
         
     }
+    
 }

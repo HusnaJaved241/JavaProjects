@@ -51,6 +51,10 @@ public class Doctor {
    {
     return dept;
    }
+   public String getCnic()
+   {
+       return cnic;
+   }
 
   
 }
