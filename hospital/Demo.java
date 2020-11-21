@@ -9,7 +9,7 @@ public class Demo {
     Doctor d [] = new Doctor[5];
     Outdoor_patient op[] = new Outdoor_patient[3];
     Indoor_patient ip[] = new Indoor_patient[3];
-
+//******************---------SEARCH DOCTOR BY NAME-----------*******************////////
     boolean searchDoctorByName(String name){
         int found = 0;
         for(int i=0;i<5;i++){
@@ -24,6 +24,8 @@ public class Demo {
         JOptionPane.showMessageDialog(null, "Name not found");
         return false;
     }
+//******************---------SEARCH DOCTOR BY DEPARTMENT-----------*******************////////
+
     boolean searchDoctorByDept(String dept)
     {
         int found = 0;
@@ -39,6 +41,7 @@ public class Demo {
         JOptionPane.showMessageDialog(null, "department not found");
         return false;
     }
+//******************---------APPOINTMENTS ON A CERTAIN DAY-----------*******************////////
     void appsOnDay(Date_class date)
     {
         int count = 0;
@@ -54,6 +57,7 @@ public class Demo {
         JOptionPane.showMessageDialog(null, "No of appointments on this date are "+count);
 
     }
+//******************---------APPOINTMENTS OF A SEPECIFIC DOCTOR-----------*******************////////
 
     void doctorAppointment()
     {
@@ -74,6 +78,7 @@ public class Demo {
         }
         JOptionPane.showMessageDialog(null, "No. of appointments of this doctor are "+count);
     }
+//******************---------CHANGE DATE AND TIME OF APPOINTMENT-----------*******************////////
 
     void modifyAppointment()
     {
